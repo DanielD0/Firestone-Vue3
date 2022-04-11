@@ -1,13 +1,13 @@
 <template>
-  <h1>HOME</h1>
+  <h1>CRUD</h1>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
-  components: {
-  
-  }
+
 }
 </script>
+
+<style>
+
+</style>
