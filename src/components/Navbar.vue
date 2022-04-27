@@ -6,15 +6,26 @@
           </router-link>
           <div> 
               <button
-               class="btn btn-primary" 
+               class="btn btn-primary mx-1" 
                @click="signIn"
                v-if="!isAuthenticated"
                >Acceder
                </button>
-              <button class="btn btn-danger" 
-              @click="signOut"
-              v-else
-              >Salir</button>
+            <div v-else>
+                <router-link
+                to="/crud"
+                class="btn btn-primary mx-1"
+                >CRUD
+                </router-link>
+                <router-link
+                to="/Perfil"
+                class="btn btn-primary mx-1"
+                >Perfil
+                </router-link>
+                <button class="btn btn-danger mx-1" 
+                @click="signOut"
+                >Salir</button>
+            </div>
           </div>
       </div>
   </nav>
