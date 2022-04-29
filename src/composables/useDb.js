@@ -1,10 +1,12 @@
-import { db } from '../firebase';
+import { db, marcaTiempo } from '../firebase';
 import { ref } from 'vue';
+import { useAuth } from '@vueuse/firebase';
  
 export const useDB = () => {
     
     const loading = ref(false);
     const referencia = db.collection('todos');
+    const {user} = useAuth()
  
     const getTodos = async () => {
         try {
@@ -23,6 +25,27 @@ export const useDB = () => {
             loading.value = false
         }
     }
+
+    const agregarTodo = async(texto) =>{
+        try {
+            const todo = {
+                texto: texto,
+                fecha: marcaTiempo(),
+                estado: false,
+                uid: user.value.uid
+            }
+            const res = await referencia.add(todo)
+            return{
+                id: res.id,
+                ...todo
+            }
+        } catch (error) {
+            return {
+                error,
+                res: true
+            }
+        }
+    }
  
-    return { getTodos, loading }
+    return { getTodos,agregarTodo, loading }
 }
