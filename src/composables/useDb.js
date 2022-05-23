@@ -46,6 +46,36 @@ export const useDB = () => {
             }
         }
     }
+
+    const eliminarTodo = async (id) =>{
+        try {
+            await referencia.doc(id).delete()
+            return {
+                res:false
+            }
+        } catch (error) {
+            return {
+                error,
+                res: true
+            }
+        }
+    }
+
+    const modificarTodo = async(todo)=>{
+        try {
+            await referencia.doc(todo.id).update({
+                estado: !todo.estado
+            })
+            return {
+                res: false
+            }
+        } catch (error) {
+            return {
+                error,
+                res:true
+            }
+        }
+    }
  
-    return { getTodos,agregarTodo, loading }
+    return { getTodos,agregarTodo,eliminarTodo,modificarTodo,loading }
 }
