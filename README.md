@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+Se encuentra publicado en:
+https://vue3-firebase-8b024.web.app/
